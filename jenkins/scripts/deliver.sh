@@ -11,14 +11,14 @@ mvn jar:jar install:install help:evaluate -Dexpression=project.name
 echo 'The following complex command extracts the value of the <name/> element'
 echo 'within <project/> of your Java/Maven project''s "pom.xml" file.'
 #set -x
-NAME=`mvn -B help:evaluate -Dstyle.color=never -Dexpression=project.name -q -DforceStdout`
+NAME=`mvn -B help:evaluate -Dstyle.color=never -Dexpression=project.name -q -DforceStdout | sed "s,\x1B\[[0-9;]*[a-zA-Z],,g"`
 #| grep  "^[^\[]"`
 #set +x
 
 echo 'The following complex command behaves similarly to the previous one but'
 echo 'extracts the value of the <version/> element within <project/> instead.'
 #set -x
-VERSION=`mvn -B help:evaluate -Dstyle.color=never -Dexpression=project.version -q -DforceStdout` 
+VERSION=`mvn -B help:evaluate -Dstyle.color=never -Dexpression=project.version -q -DforceStdout | sed "s,\x1B\[[0-9;]*[a-zA-Z],,g"` 
 #| grep  "^[^\[]"`
 #set +x
 
